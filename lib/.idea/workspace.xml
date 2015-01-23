@@ -54,10 +54,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="breweries_controller.rb" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ratings_controller.rb" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/../app/controllers/ratings_controller.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.57416266" vertical-offset="30" max-vertical-offset="390">
+              <caret line="10" column="12" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="breweries_controller.rb" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../app/controllers/breweries_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6411483" vertical-offset="1036" max-vertical-offset="1335">
+            <state vertical-scroll-proportion="0.0" vertical-offset="1036" max-vertical-offset="1335">
               <caret line="78" column="69" selection-start-line="78" selection-start-column="69" selection-end-line="78" selection-end-column="69" />
               <folding />
             </state>
@@ -85,6 +95,7 @@
         <option value="$PROJECT_DIR$/../config/application.rb" />
         <option value="$PROJECT_DIR$/../app/models/concerns/rating_average.rb" />
         <option value="$PROJECT_DIR$/../app/controllers/breweries_controller.rb" />
+        <option value="$PROJECT_DIR$/../app/controllers/ratings_controller.rb" />
       </list>
     </option>
   </component>
@@ -144,7 +155,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../app/controllers/breweries_controller.rb" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../app/controllers/ratings_controller.rb" />
   </component>
   <component name="RunManager">
     <configuration default="true" type="RSpecRunConfigurationType" factoryName="RSpec">
@@ -325,8 +336,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../app/controllers/breweries_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6411483" vertical-offset="1036" max-vertical-offset="1335">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1036" max-vertical-offset="1335">
           <caret line="78" column="69" selection-start-line="78" selection-start-column="69" selection-end-line="78" selection-end-column="69" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../app/controllers/ratings_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.57416266" vertical-offset="30" max-vertical-offset="390">
+          <caret line="10" column="12" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
           <folding />
         </state>
       </provider>
