@@ -3,7 +3,7 @@ module RatingAverage
 
   def average_rating
     scoret = self.ratings.map {|rating| rating.score}
-    rsumma = scoret.inject {|memo, lisattava| memo + lisattava}
-    avg = rsumma.to_f / scoret.count
+    return 0 if scoret.empty?
+    avg = scoret.inject {|memo, lisattava| memo + lisattava}.to_f / scoret.count
   end
 end

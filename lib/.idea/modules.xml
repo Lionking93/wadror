@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../app/controllers/.idea/controllers.iml" filepath="$PROJECT_DIR$/../app/controllers/.idea/controllers.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/lib.iml" filepath="$PROJECT_DIR$/.idea/lib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../.idea/ratebeer.iml" filepath="$PROJECT_DIR$/../.idea/ratebeer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../app/views/.idea/views.iml" filepath="$PROJECT_DIR$/../app/views/.idea/views.iml" />
     </modules>
   </component>
 </project>
