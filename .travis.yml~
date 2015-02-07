@@ -1,10 +1,15 @@
 language: ruby
-
 rvm:
- - 2.2.0
-
+- 2.0.0
 script:
- - bundle exec rake db:migrate --trace
- - RAILS_ENV=test bundle exec rake db:migrate --trace
- - bundle exec rake db:test:prepare
- - bundle exec rspec -fd spec/
+- bundle exec rake db:migrate --trace
+- RAILS_ENV=test bundle exec rake db:migrate --trace
+- bundle exec rake db:test:prepare
+- bundle exec rspec -fd spec/
+deploy:
+  provider: heroku
+  api_key:
+    secure: RGQGcNvpY+nu0xApKxjh9youy1D/rL0659acknqWXRodyHXfF+aKxhhwkR35HYK0cKKTwvhDEV3C5/tl60Djf0TG3BVQ3Kw5spnidChA5AcmsUVpnHODkB16dpHwLh+FyRPuy8TDTV19dRaWER3Aqe6i9K/r6pOggw92r14jMSw=
+  app: boiling-reef-5115
+  on:
+    repo: Lionking93/wadror
