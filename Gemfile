@@ -21,7 +21,7 @@ group :test do
   gem 'simplecov', require: false
 end
 
-ruby '2.0.0'
+ruby '2.2.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
