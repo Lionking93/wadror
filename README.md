@@ -4,3 +4,4 @@ Linkki herokuun: https://boiling-reef-5115.herokuapp.com/breweries
 
 [![Build Status](https://travis-ci.org/Lionking93/wadror.png)](https://travis-ci.org/Lionking93/wadror)
 
+[![Code Climate](https://codeclimate.com/github/Lionking93/wadror/badges/gpa.svg)](https://codeclimate.com/github/Lionking93/wadror)
