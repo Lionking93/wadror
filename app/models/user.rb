@@ -16,4 +16,18 @@ class User < ActiveRecord::Base
     return nil if ratings.empty?
     ratings.order(score: :desc).limit(1).first.beer
   end
+
+  def favorite_style
+    return nil if ratings.empty?
+    beers_and_ratings_joined = Beer.joins(:ratings).where("ratings.user_id = #{id}")
+    styles_with_scores = beers_and_ratings_joined.select("style, avg(score) as total_score").group("style")
+    styles_with_scores.sort_by{|style| style.total_score}.last.style
+  end
+
+  def favorite_brewery
+    return nil if ratings.empty?
+    breweries_and_ratings_joined = Brewery.joins(:ratings).where("ratings.user_id = #{id}")
+    breweries_and_scores = breweries_and_ratings_joined.select("breweries.name, avg(score) as total_score").group("breweries.name")
+    breweries_and_scores.sort_by{|brewery| brewery.total_score}.last.name
+  end
 end

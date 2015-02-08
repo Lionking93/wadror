@@ -1,6 +1,12 @@
 require 'rails_helper'
 
 describe "Beer" do
+  let!(:user){FactoryGirl.create :user}
+
+  before :each do
+    sign_in(username:'Pekka', password:'Foobar1')
+  end
+
   it "when beer name given, is added to the system" do
     visit new_beer_path
     fill_in('beer_name', with: 'Bisse')

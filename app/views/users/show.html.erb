@@ -11,6 +11,30 @@
 </p>
 
 <p>
+  <% if @user.ratings.empty? %>
+      Doesn't have a favorite beer yet!
+  <% else %>
+      Favorite beer is <%= @user.favorite_beer %>
+  <% end %>
+</p>
+
+<p>
+  <% if @user.ratings.empty? %>
+    Doesn't have a favorite style yet!
+  <% else %>
+    Favorite style is <%= @user.favorite_style %>
+  <% end %>
+</p>
+
+<p>
+  <% if @user.ratings.empty? %>
+    Doesn't have a favorite brewery yet!
+  <% else %>
+    Favorite brewery is <%= @user.favorite_brewery %>
+  <% end %>
+</p>
+
+<p>
   <% if @user.memberships.empty? %>
   Not a member of any beer club
   <% else %>
@@ -25,7 +49,7 @@
       <li>
       <%= rating %>
       <% if @user == current_user %>
-        <%= link_to 'delete', rating_path, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <%= link_to 'delete', rating, method: :delete, data: { confirm: 'Are you sure?' } %>
       <% end %>
       </li>
 <% end %>
