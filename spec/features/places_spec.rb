@@ -8,7 +8,6 @@ describe 'Places' do
     visit places_path
     fill_in('city', with: 'kumpula')
     click_button "Search"
-    byebug
     expect(page).to have_content "Oljenkorsi"
   end
 
