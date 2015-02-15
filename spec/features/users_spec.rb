@@ -30,7 +30,6 @@ describe "User" do
 
       expect(current_path).to eq(signin_path)
       expect(page).to have_content 'Username and/or password mismatch'
-      puts page.html
     end
 
     it "when signed in and has no ratings, doesn't have any favorites" do
@@ -65,7 +64,8 @@ describe "User" do
 
   def create_beer_with_rating_style_and_brewery(score, user, name, style, brewery)
     brewery1 = FactoryGirl.create(:brewery, name: brewery)
-    beer = FactoryGirl.create(:beer, name:name, style:style, brewery: brewery1)
+    style1 = FactoryGirl.create(:style, name: style)
+    beer = FactoryGirl.create(:beer, name:name, style:style1, brewery: brewery1)
     FactoryGirl.create(:rating, score:score, beer:beer, user:user)
     beer
   end

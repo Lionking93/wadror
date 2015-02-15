@@ -19,8 +19,8 @@ class User < ActiveRecord::Base
 
   def favorite_style
     return nil if ratings.empty?
-    beers_and_ratings_joined = Beer.joins(:ratings).where("ratings.user_id = #{id}")
-    styles_with_scores = beers_and_ratings_joined.select("style, avg(score) as total_score").group("style")
+    beers_and_ratings_joined = Style.joins(:ratings).where("ratings.user_id = #{id}")
+    styles_with_scores = beers_and_ratings_joined.select("styles.name as style, avg(score) as total_score").group("style")
     styles_with_scores.sort_by{|style| style.total_score}.last.style
   end
 

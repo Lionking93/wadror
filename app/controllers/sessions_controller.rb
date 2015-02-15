@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
       # talletetaan sessioon käyttäjän id
       session[:user_id] = user.id
       # ohjataan käyttäjä omalle sivulleen
-      redirect_to user, notice: "Welcome back!"
+      redirect_to user_path user, notice: "Welcome back!"
     else
       redirect_to :back, notice: "Username and/or password mismatch!"
     end

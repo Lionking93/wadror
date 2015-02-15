@@ -87,11 +87,11 @@ RSpec.describe User, type: :model do
       expect(user.favorite_style).to eq(nil)
     end
 
-    it "is the only style is only one rating" do
+    it "is the only style if only one rating" do
       beer = FactoryGirl.create(:beer)
       rating = FactoryGirl.create(:rating, beer:beer, user:user)
 
-      expect(user.favorite_style).to eq(beer.style)
+      expect(user.favorite_style).to eq(beer.style.name)
     end
 
     it "is the one with the highest average of ratings" do
@@ -130,7 +130,8 @@ RSpec.describe User, type: :model do
 
   def create_beer_with_rating(score, user, style, brewery)
     brewery1 = FactoryGirl.create(:brewery, name: brewery)
-    beer = FactoryGirl.create(:beer, style:style, brewery: brewery1)
+    style1 = FactoryGirl.create(:style, name: style)
+    beer = FactoryGirl.create(:beer, style:style1, brewery: brewery1)
     FactoryGirl.create(:rating, score:score, beer:beer, user:user)
     beer
   end

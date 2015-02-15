@@ -2,14 +2,18 @@ require 'rails_helper'
 
 RSpec.describe Beer, type: :model do
   it "has name and style set correctly" do
-    beer = Beer.create name:"Nobelaner", style:"Lager"
+    style = FactoryGirl.create(:style)
+    beer = Beer.create name:"Nobelaner"
+
+    style.beers << beer
 
     expect(beer.valid?).to be(true)
     expect(Beer.count).to eq(1)
   end
 
   it "is not saved without a name" do
-    beer = Beer.create style:"Lager"
+    style = FactoryGirl.create(:style)
+    beer = style.beers.create name:nil
 
     expect(beer.valid?).to be(false)
     expect(Beer.count).to eq(0)
@@ -30,7 +34,7 @@ RSpec.describe Beer, type: :model do
     end
 
     it "has the default style" do
-      expect(beer.style).to eq("Lager")
+      expect(beer.style.name).to eq("Lager")
     end
   end
 end

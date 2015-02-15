@@ -16,14 +16,13 @@
       </thead>
       <% @places.each do |place| %>
         <tr>
-          <td><%= place.id %></td>
-          <td><%= link_to place.name, "places/"+place.id %></td>
-          <td><%= place.status %></td>
-          <td><%= place.street %></td>
-          <td><%= place.city %></td>
-          <td><%= place.zip %></td>
-          <td><%= place.country %></td>
-          <td><%= place.overall %></td>
+          <% Place.rendered_fields.each do |f| %>
+              <% if f==:name %>
+                  <td><%= link_to place.send(Place.rendered_fields[1]), "places/"+place.id %></td>
+              <% else %>
+                  <td><%= place.send(f) %></td>
+              <% end %>
+          <% end %>
         </tr>
       <% end %>
     </table>
