@@ -1,6 +1,7 @@
 class BeerClubsController < ApplicationController
   before_action :set_beer_club, only: [:show, :edit, :update, :destroy]
   before_action :ensure_that_signed_in, except: [:index, :show]
+  before_action :ensure_that_user_is_admin, only: :destroy
   # GET /beer_clubs
   # GET /beer_clubs.json
   def index
@@ -15,7 +16,6 @@ class BeerClubsController < ApplicationController
       @membership.beer_club = @beer_club
     else
       @membership = @beer_club.memberships.find_by user_id: current_user.id
-      flash.now[:notice] = params[:notice]
     end
   end
 

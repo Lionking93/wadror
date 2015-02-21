@@ -6,6 +6,11 @@ gem 'rails', '4.2.0'
 # Use sqlite3 as the database for Active Record
 gem 'httparty'
 
+gem 'bootstrap-sass'
+group :development do
+  gem 'rails_layout'
+end
+
 group :production do
    gem 'pg'
    gem 'rails_12factor'

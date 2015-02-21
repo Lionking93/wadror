@@ -8,6 +8,10 @@ class SessionsController < ApplicationController
     user = User.find_by username: params[:username]
     # Jos käyttäjätunnusta ei ole
     if user && user.authenticate(params[:password])
+      if user.access == false
+        redirect_to :back, notice: "Your account is frozen, please contact admin!"
+        return
+      end
       # talletetaan sessioon käyttäjän id
       session[:user_id] = user.id
       # ohjataan käyttäjä omalle sivulleen

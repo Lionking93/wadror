@@ -1,13 +1,36 @@
 <p id="notice"><%= notice %></p>
 
-<h2><%= @user.username %></h2>
+<h2><%= @user.username %>
+  <% if not @user.access %>
+      <span class="label label-info">account frozen</span>
+  <% end %>
+</h2>
 
 <p>
   Has made <%= @user.ratings.count %> ratings
 </p>
 
+<% if !@user.access and current_user and current_user.admin %>
+    <%= link_to 'Reactivate account', toggle_account_access_user_path(@user.id), method: :post, class: 'btn btn-primary' %>
+<% elsif @user.access and current_user and current_user.admin %>
+    <%= link_to 'Froze account', toggle_account_access_user_path(@user.id), method: :post, class: 'btn btn-primary' %>
+<% end %>
+
+<h3>Ratings</h3>
+
+<ul>
+  <% @user.ratings.each do |rating| %>
+      <li>
+        <%= rating %>
+        <% if @user == current_user %>
+            <%= link_to 'delete', rating, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% end %>
+      </li>
+  <% end %>
+</ul>
+
 <p>
-  Average of ratings: <%= @user.average_rating %>
+  Average of ratings: <%= round(@user.average_rating) %>
 </p>
 
 <p>
@@ -44,18 +67,7 @@
   <% end %>
 </p>
 
-<ul>
-<% @user.ratings.each do |rating| %>
-      <li>
-      <%= rating %>
-      <% if @user == current_user %>
-        <%= link_to 'delete', rating, method: :delete, data: { confirm: 'Are you sure?' } %>
-      <% end %>
-      </li>
-<% end %>
-</ul>
-
 <% if @user == current_user %>
-    <td><%= link_to 'Edit', edit_user_path(@user) %></td>|
-    <td><%= link_to 'Destroy', @user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Edit', edit_user_path(@user), class:'btn btn-success' %></td>
+    <td><%= link_to 'Destroy', @user, class:'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' } %></td>
 <% end %>

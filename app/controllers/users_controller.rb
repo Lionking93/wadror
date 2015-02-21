@@ -10,7 +10,6 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    flash.now[:notice] = params[:notice]
   end
 
   # GET /users/new
@@ -22,6 +21,14 @@ class UsersController < ApplicationController
   def edit
   end
 
+  def toggle_account_access
+    user = User.find(params[:id])
+    user.update_attribute :access, (not user.access)
+
+    new_status = user.access? ? "active" : "frozen"
+
+    redirect_to :back, notice: "Account status changed to #{new_status}"
+  end
   # POST /users
   # POST /users.json
   def create

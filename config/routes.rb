@@ -5,12 +5,16 @@ Rails.application.routes.draw do
 
   resources :beer_clubs
 
-  resources :users
+  resources :users do
+    post 'toggle_account_access', on: :member
+  end
 
   resources :beers
   get 'kaikki_bisset', to: 'beers#index'
 
-  resources :breweries
+  resources :breweries do
+    post 'toggle_activity', on: :member
+  end
   root 'breweries#index'
 
   get 'signup', to: 'users#new'

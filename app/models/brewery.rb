@@ -8,10 +8,18 @@ class Brewery < ActiveRecord::Base
   validates :year, numericality: { greater_than_or_equal_to: 1042, only_integer: true}
   validate :brewery_cannot_be_established_in_the_future
 
+  scope :active, -> { where active:true }
+  scope :retired, -> { where active:[nil, false] }
+
   def brewery_cannot_be_established_in_the_future
     if self.year > Date.today.year
       errors.add(:year, "can't be after #{Date.today.year}!")
     end
+  end
+
+  def self.top(n)
+    sorted_by_rating_in_desc_order = Brewery.all.sort_by{ |b| -(b.average_rating||0) }
+    top_n = sorted_by_rating_in_desc_order[0..(n-1)]
   end
 
   def print_report
