@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   resources :beers
   get 'kaikki_bisset', to: 'beers#index'
+  get 'beerlist', to: 'beers#list'
 
   resources :breweries do
     post 'toggle_activity', on: :member

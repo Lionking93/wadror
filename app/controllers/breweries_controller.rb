@@ -8,6 +8,21 @@ class BreweriesController < ApplicationController
   def index
     @active_breweries = Brewery.active
     @retired_breweries = Brewery.retired
+
+    @breweries = Brewery.all
+
+    order = params[:order] || 'name'
+
+    @breweries = case order
+                   when 'name'
+                     breweries_by_name = order_by(@breweries, 'name')
+                     @active_breweries = breweries_by_name.select{|b| b.active }
+                     @retired_breweries = breweries_by_name.select{|b| !b.active }
+                   when 'year'
+                     breweries_by_year = order_by(@breweries, 'year')
+                     @active_breweries = breweries_by_year.select{|b| b.active }
+                     @retired_breweries = breweries_by_year.select{|b| !b.active }
+                 end
   end
 
   def toggle_activity
@@ -82,5 +97,15 @@ class BreweriesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def brewery_params
       params.require(:brewery).permit(:name, :year, :active)
+    end
+
+    def order_by(breweries, attribute)
+      if session[:previous_order].nil? || session[:previous_order] ==  breweries.sort { |x, y| y.send(attribute) <=> x.send(attribute) }.map{|b| b.id}
+        session[:previous_order] = breweries.sort_by{ |b| b.send(attribute) }.map{|b| b.id }
+        breweries.sort_by{ |b| b.send(attribute) }
+      else
+        session[:previous_order] = breweries.sort{ |x, y| y.send(attribute) <=> x.send(attribute) }.map{|b| b.id }
+        breweries.sort { |x, y| y.send(attribute) <=> x.send(attribute) }
+      end
     end
 end

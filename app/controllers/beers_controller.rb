@@ -7,6 +7,14 @@ class BeersController < ApplicationController
   # GET /beers.json
   def index
     @beers = Beer.all
+
+    order = params[:order] || 'name'
+
+    @beers = case order
+               when 'name' then @beers.sort_by{ |b| b.name }
+               when 'style' then @beers.sort_by{ |b| b.style.name }
+               when 'brewery' then @beers.sort_by{ |b| b.brewery.name }
+             end
   end
 
   # GET /beers/1
@@ -14,6 +22,10 @@ class BeersController < ApplicationController
   def show
     @rating = Rating.new
     @rating.beer = @beer
+  end
+
+  def list
+    
   end
 
   # GET /beers/new
