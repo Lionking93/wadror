@@ -2,12 +2,24 @@
 
 <h1>Listing Beers</h1>
 
+<div style="border-style: solid;">
+  beerlist-name: <%= ActionController::Base.new.fragment_exist?( 'beerlist-name' ) %>
+  <br>
+  beerlist-style: <%= ActionController::Base.new.fragment_exist?( 'beerlist-style' ) %>
+  <br>
+  beerlist-brewery: <%= ActionController::Base.new.fragment_exist?( 'beerlist-brewery' ) %>
+  <br>
+  current: <%= "beerlist-#{@order}" %>
+</div>
+
+<% cache "beerlist-#{@order}", skip_digest: true do %>
+
 <table class="table table-hover">
   <thead>
     <tr>
-      <th><%= link_to 'Name', beers_path(order:"name") %></th>
-      <th><%= link_to 'Style', beers_path(order:"style") %></th>
-      <th><%= link_to 'Brewery', beers_path(order:"brewery") %></th>
+      <th><%= link_to 'Name', beers_path(order:'name') %></th>
+      <th><%= link_to 'Style', beers_path(order:'style') %></th>
+      <th><%= link_to 'Brewery', beers_path(order:'brewery') %></th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -22,6 +34,8 @@
     <% end %>
   </tbody>
 </table>
+
+<% end %>
 
 <br>
 

@@ -5,7 +5,10 @@
 <table class="table table-hover">
   <thead>
     <tr>
-      <th colspan="2">Username</th>
+      <th>Username</th>
+      <th> Rated beers </th>
+      <th> Total ratings </th>
+      <th></th>
     </tr>
   </thead>
 
@@ -13,6 +16,8 @@
     <% @users.each do |user| %>
       <tr>
         <td><%= link_to user.username, user %></td>
+        <td><%= user.beers.size %></td>
+        <td><%= user.ratings.size %></td>
         <td>
           <% if !user.access and current_user and current_user.admin %>
                 <span class="label label-info">account frozen</span>
@@ -23,6 +28,3 @@
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New User', new_user_path, class:'btn btn-success' %>
