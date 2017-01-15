@@ -1,6 +1,6 @@
 == README
 
-Koulutyönä Ruby on railsia käyttäen toteutettu web-sovellus. Sovellus tarjoaa palvelun erilaisten oluttuotteiden, -laatujen ja panimoiden arvostelemiseksi.
+Koulutyönä keväällä 2015 Ruby on railsia käyttäen toteutettu web-sovellus. Sovellus tarjoaa palvelun erilaisten oluttuotteiden, -laatujen ja panimoiden arvostelemiseksi.
 
 Linkki herokuun: https://boiling-reef-5115.herokuapp.com/breweries
 
