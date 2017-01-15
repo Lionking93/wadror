@@ -21,7 +21,6 @@ describe "User" do
       visit signin_path
       sign_in(username:"Pekka", password:"Foobar1")
 
-      expect(page).to have_content 'Welcome back!'
       expect(page).to have_content 'Pekka'
     end
 

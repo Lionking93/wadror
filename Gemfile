@@ -23,15 +23,15 @@ end
 
 group :test do
   gem 'factory_girl_rails'
-  gem 'capybara'
-  gem 'selenium-webdriver'
+  gem 'capybara', '2.5.0'
+  gem 'selenium-webdriver',  '2.48.1'
   gem 'database_cleaner'
   gem 'launchy'
   gem 'simplecov', require: false
   gem 'webmock'
 end
 
-ruby '2.2.0'
+ruby '2.3.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -60,7 +60,7 @@ gem 'bcrypt', '~> 3.1.7'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-group :development, :test do
+group :development do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 

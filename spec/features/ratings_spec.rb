@@ -35,14 +35,6 @@ describe "Rating" do
       user2.ratings << rating2
     end
 
-    it "and the amount of them are shown in the ratings page " do
-    visit ratings_path
-
-    expect(page).to have_content("Number of ratings: 2")
-    expect(page).to have_content("iso 3 10 Pekka")
-    expect(page).to have_content("iso 3 20 Rokka")
-    end
-
     it "that a user has given and the amount of them are shown on the user's page" do
     visit user_path(user)
 
